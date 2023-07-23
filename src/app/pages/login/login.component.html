@@ -1,0 +1,53 @@
+<!-- <button (click)="signUp()">Sign Up</button>
+<button (click)="signIn()">Sign In</button>
+<button (click)="signOut()">Sign Out</button> -->
+<div class="login">
+
+    <form *ngIf="signInMethod==='email';else elseBlock">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" name="email" matInput [(ngModel)]="email" placeholder="Email">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Password:</mat-label>
+            <input type="password" name="password" matInput [(ngModel)]="password" placeholder="Password">
+        </mat-form-field>
+        <button mat-raised-button (click)="signIn()">Sign In</button>
+    </form>
+    <ng-template #elseBlock>
+        <form *ngIf="!isCodeSent;else elseCodeBlock">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Phone Number:</mat-label>
+                <input type="phone" name="phone" matInput [(ngModel)]="phone" placeholder="Phone Number">
+            </mat-form-field>
+            <button mat-raised-button (click)="sendCode()">Send Code</button>
+        </form>
+        <ng-template #elseCodeBlock>
+            <form>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Code:</mat-label>
+                    <input type="text" name="code" matInput [(ngModel)]="code" placeholder="Code">
+                </mat-form-field>
+                <button mat-raised-button (click)="loginWithCode()">login</button>
+            </form>
+        </ng-template>
+    </ng-template>
+    <div class="sign-in-methods">
+        <button mat-raised-button (click)="signInGoogleFacebook('google')">
+            <img src="../../../assets/imgs/google-logo.svg">
+            <p>Sign In With Google</p>
+        </button>
+        <button mat-raised-button (click)="signInGoogleFacebook('facebook')">
+            <img src="../../../assets/imgs/facebook-logo.svg">
+            <p>Sign In With Facebook</p>
+        </button>
+        <button mat-raised-button (click)="phoneAuth()">
+            <img src="../../../assets/imgs/phone-logo.svg">
+            <p>Sign In With Phone</p>
+        </button>
+        <button mat-raised-button (click)="signOut()">
+            logout
+        </button>
+    </div>
+    <div id="recaptcha-container"></div>
+</div>

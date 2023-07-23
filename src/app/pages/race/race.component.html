@@ -1,0 +1,34 @@
+<div class="race main-content" *ngIf="room">
+
+    <div class="timer">
+        <countdown (enableInput)="startGame()" (emitTimer)="getResults($event)"
+            *ngIf="room.startTimestamp;else elseBlock" [time]="room.startTimestamp" [isGameOn]="isGameOn"></countdown>
+        <ng-template #elseBlock>
+            <p>Waiting for players...</p>
+        </ng-template>
+    </div>
+
+    <div class="progress-list">
+        <div class="progress-preview" *ngFor="let player of room.players">
+            <p>{{player.username}}</p>
+            <mat-progress-bar class="progress-bar" color="warn" mode="determinate" [value]="player.progress">
+            </mat-progress-bar>
+        </div>
+    </div>
+
+    <div class="quote">
+        <span *ngFor="let letter of room.quote.text.split('');let i=index"
+            [style.color]="getLetterColor(i)">{{letter}}</span>
+    </div>
+
+    <input #myInput [disabled]="!isGameOn" type="text" [(ngModel)]="typedText" (input)="checkLetter($event)">
+
+    <div class="results">
+        <p *ngIf="wpm">W.P.M:{{wpm}}</p>
+        <div class="winners" *ngIf="room.results">
+            <p *ngFor="let player of room.results;let i=index">{{i+1}}. {{player.username}} - W.P.M : {{player.wpm}} -
+                Time :
+                {{player.timeToFinish*1000|stopwatch}}</p>
+        </div>
+    </div>
+</div>

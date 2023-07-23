@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "type-racer-c1f03": {
+      "hosting": {
+        "TypeRacer": [
+          "type-racer-c1f03"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "type-racer-c1f03"
+  }
+}

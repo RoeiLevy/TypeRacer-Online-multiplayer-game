@@ -1,0 +1,19 @@
+header{
+    background-color: #93B7BE;
+    padding: 10px;
+    .main-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h1{
+            margin: 0;
+        }
+        nav{
+            display: flex;
+            li{
+                list-style: none;
+                margin: 5px;
+            }
+        }
+    }
+}

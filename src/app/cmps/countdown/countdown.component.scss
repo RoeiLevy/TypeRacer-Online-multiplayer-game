@@ -1,0 +1,11 @@
+.msg{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    background-color: rgba(112, 250, 0, 0.521);
+    border-radius: 3px;
+    text-align: center;
+    animation-name: slide;
+}
