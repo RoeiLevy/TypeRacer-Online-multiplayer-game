@@ -33,8 +33,9 @@ export class LoginComponent implements OnInit {
     this.firebaseAuth.signOut();
   }
 
-  signInGoogleFacebook(providerName: string) {
-    this.firebaseAuth.signInGoogleFacebook(providerName);
+  async signInGoogleFacebook(providerName: string) {
+    const user = await this.firebaseAuth.signInGoogleFacebook(providerName);
+		console.log("TCL: LoginComponent -> signInGoogleFacebook -> user", user)
   }
 
   phoneAuth() {
